@@ -28,13 +28,15 @@ public:
 };
 
 int main() {
-    std::vector<std::vector<int>> input = {{9,9,8,1},{5,6,2,6},{8,2,6,4},{6,2,2,2}};
+    std::vector<std::vector<int>> input = {{9,9,8,1}, {5,6,2,6}, {8,2,6,4}, {6,2,2,2}};
     std::vector<std::vector<int>> ans = (new Solution())->largestLocal(input);
-    for (int i = 0; i < ans.size(); i++) {
-        for (int j = 0; j < ans.size(); j++) {
-            std::cout << ans[i][j] << " ";
+
+    for (auto row : ans) {
+        for (int val : row) {
+            std::cout << val << " ";
         }
         std::cout << "\n";
     }
+
     return 0;
 }
