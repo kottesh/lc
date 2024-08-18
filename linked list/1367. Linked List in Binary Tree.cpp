@@ -27,9 +27,9 @@ public:
         if (!head || !root)
             return true;
 
-        return isSubPath(head->next, root->left) && 
-               (head->val == root->val) ? true : false && 
-               isSubPath(head->next, root->right);
+        return (head->val == root->val) ? true : false && 
+            isSubPath(head->next, root->left) && 
+            isSubPath(head->next, root->right);
     }
 };
 
