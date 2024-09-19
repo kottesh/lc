@@ -36,5 +36,5 @@ public:
 
 int main() {
     Solution sol;
-    std::cout << sol.convert("A", 3);
+    std::cout << sol.convert("PAYPALISHIRING", 3);
 }

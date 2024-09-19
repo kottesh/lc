@@ -4,6 +4,7 @@ class Solution {
 public:
     std::string reverseWords(std::string s) {
         std::vector<std::string> store;
+        
         int start = 0, i = 0;
 
         while (i < s.length()) {
