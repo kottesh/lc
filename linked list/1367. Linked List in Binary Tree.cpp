@@ -1,38 +1,21 @@
-#include <bits/stdc++.h>
-
-/**
- * Definition for singly-linked list.
- * struct ListNode {
- *     int val;
- *     ListNode *next;
- *     ListNode() : val(0), next(nullptr) {}
- *     ListNode(int x) : val(x), next(nullptr) {}
- *     ListNode(int x, ListNode *next) : val(x), next(next) {}
- * };
- */
-/**
- * Definition for a binary tree node.
- * struct TreeNode {
- *     int val;
- *     TreeNode *left;
- *     TreeNode *right;
- *     TreeNode() : val(0), left(nullptr), right(nullptr) {}
- *     TreeNode(int x) : val(x), left(nullptr), right(nullptr) {}
- *     TreeNode(int x, TreeNode *left, TreeNode *right) : val(x), left(left), right(right) {}
- * };
- */
 class Solution {
+private:
+    bool findMatch(ListNode* head, TreeNode* root) {
+        if (!head) return true;
+        if (!root || root->val != head->val) return false;
+
+        return (findMatch(head->next, root->left) ||
+                findMatch(head->next, root->right));
+    } 
 public:
     bool isSubPath(ListNode* head, TreeNode* root) {
-        if (!head || !root)
-            return true;
+        if (!root) return false;
 
-        return (head->val == root->val) ? true : false && 
-            isSubPath(head->next, root->left) && 
-            isSubPath(head->next, root->right);
+        if (!findMatch(head, root))
+            return (isSubPath(head, root->left) || 
+                    isSubPath(head, root->right));
+
+        return true;
     }
 };
 
-int main () {
-    return 0;
-}
