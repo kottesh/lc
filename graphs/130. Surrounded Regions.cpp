@@ -5,19 +5,20 @@ using namespace std;
 class Solution {
     vector<pair<int, int>> dirs = {{0, 1}, {1, 0}, {-1, 0}, {0, -1}};
 
-    void dfs(vector<vector<char>>& board, vector<vector<int>>& visited, int r, int c) {
+    void dfs(const vector<vector<char>>& board, vector<vector<int>>& visited, int r, int c) {
         if (r < 0 or r >= board.size() or c < 0 or c >= board[0].size() or visited[r][c] == 1 or board[r][c] == 'X')
             return;
-        
+
         visited[r][c] = 1;
-        
-        for (auto [dr, dc] : dirs)
+
+        for (const auto& [dr, dc] : dirs)
             dfs(board, visited, r + dr, c + dc);
+
     }
 public:
     void solve(vector<vector<char>>& board) {
         vector<vector<int>> visited(board.size(), vector<int>(board[0].size(), -1));
-        
+
         for (int i = 0; i < board[0].size(); i++) {
             if (board[0][i] == 'O')
                 dfs(board, visited, 0, i);
